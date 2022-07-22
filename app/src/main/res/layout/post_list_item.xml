@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/post_avatar_size"
+        android:layout_height="@dimen/post_avatar_size"
+        android:src="@drawable/ic_launcher_foreground"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/netology_avatar" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar"
+        app:layout_constraintBottom_toTopOf="@id/published"
+        app:layout_constraintEnd_toStartOf="@id/more_button"
+        android:layout_marginStart="@dimen/common_margin_spacing"
+        android:id="@+id/author"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/author"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/author"
+        app:layout_constraintBottom_toBottomOf="@id/avatar"
+        app:layout_constraintEnd_toStartOf="@id/more_button"
+        android:layout_marginStart="@dimen/common_margin_spacing"
+        android:id="@+id/published"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/published"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/header_barrier"
+        android:layout_marginTop="@dimen/common_margin_spacing"
+        android:text="@string/post_text"
+        android:ellipsize="end"
+        />
+
+    <ImageButton
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/author"
+        app:layout_constraintBottom_toBottomOf="@id/published"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        android:visibility="visible"
+        android:id="@+id/more_button"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/show_more_button" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/header_barrier"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,published,more_button"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
