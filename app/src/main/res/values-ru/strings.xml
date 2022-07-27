@@ -6,4 +6,12 @@
     <string name="post_text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</string>
     <string name="netology_avatar">Нетология аватар</string>
     <string name="show_more_button">кнопка "подробнее"</string>
+    <string name="like_icon">Нравится</string>
+    <string name="comment_icon">Комментарий</string>
+    <string name="reply_icon">Реплай</string>
+    <string name="visibility_icon">Просмотрено</string>
+    <string name="visibility_count">12,4K</string>
+    <string name="like_count">52</string>
+    <string name="comments_count">6</string>
+    <string name="share_count">5</string>
 </resources>
