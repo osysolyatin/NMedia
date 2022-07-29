@@ -20,9 +20,16 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
                     Greeting("NMedia")
+                    println(R.string.author)
+                    println(getString(R.string.published))
+                    println(resources.displayMetrics.heightPixels)
                 }
             }
         }
+        setContentView(R.layout.activity_main)
+        println(R.string.author)
+        println(getString(R.string.published))
+        println(resources.displayMetrics.heightPixels)
     }
 }
 
