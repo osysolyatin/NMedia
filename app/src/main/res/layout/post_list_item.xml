@@ -11,6 +11,7 @@
         android:layout_width="@dimen/post_avatar_size"
         android:layout_height="@dimen/post_avatar_size"
         android:src="@drawable/ic_launcher_foreground"
+        app:srcCompat ="@drawable/ic_launcher_foreground"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,6 +44,7 @@
         android:ellipsize="end"
         android:singleLine="true"
         android:text="@string/published"
+
         />
 
     <TextView
@@ -62,6 +64,7 @@
         app:layout_constraintTop_toTopOf="@id/author"
         app:layout_constraintBottom_toBottomOf="@id/published"
         android:src="@drawable/ic_baseline_more_vert_24"
+        app:srcCompat="@drawable/ic_baseline_more_vert_24"
         android:visibility="visible"
         android:id="@+id/more_button"
         android:background="@android:color/transparent"
@@ -87,6 +90,7 @@
         android:layout_height="@dimen/icon_size"
         android:src="@drawable/ic_like_border_24"
         android:visibility="visible"
+        android:background="@android:color/transparent"
         tools:src="@drawable/ic_like_border_24"
         app:layout_constraintTop_toTopOf="@id/post_text_barrier"
         android:layout_marginTop="@dimen/common_margin_spacing"
@@ -134,9 +138,9 @@
     android:id="@+id/share_icon"
     android:layout_width="@dimen/icon_size"
     android:layout_height="@dimen/icon_size"
-    android:src="@drawable/ic_redo_icon_24"
+    android:src="@drawable/ic_share_24"
     android:visibility="visible"
-    tools:src="@drawable/ic_redo_icon_24"
+    tools:src="@drawable/ic_share_24"
     android:background="@android:color/transparent"
     app:layout_constraintTop_toTopOf="@id/post_text_barrier"
     app:layout_constraintStart_toEndOf="@id/comment_icon"

@@ -3,7 +3,9 @@
     <string name="app_name">НМедиа</string>
     <string name="author">Нетология. Университет интернет-профессий</string>
     <string name="published">20 июля 2022 года в 18:00</string>
-    <string name="post_text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</string>
+    <string name="post_text">
+        Привет? это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы астем сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остается с нами: Мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия - помочь встать на путь роста и начать цепочку перемен. http://netolo.gy/fyb
+    </string>
     <string name="netology_avatar">Нетология аватар</string>
     <string name="show_more_button">кнопка "подробнее"</string>
     <string name="like_icon">Нравится</string>
@@ -11,7 +13,7 @@
     <string name="reply_icon">Реплай</string>
     <string name="visibility_icon">Просмотрено</string>
     <string name="visibility_count">12,4K</string>
-    <string name="like_count">52</string>
+    <string name="like_count">78</string>
     <string name="comments_count">6</string>
     <string name="share_count">5</string>
 </resources>
