@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
             shareCountText.text = post.shares.toString()
         }
 
-        binding.likeIcon.setOnClickListener {
+            binding.likeIcon.setOnClickListener {
             post.likedByMe = !post.likedByMe
             val imageResId =
                 if (post.likedByMe) R.drawable.ic_like_filled_24 else R.drawable.ic_like_border_24
@@ -50,7 +50,6 @@ class MainActivity : ComponentActivity() {
         binding.shareIcon.setOnClickListener {
                 post.shares ++
             binding.shareCountText.text = countViews(post.shares.toLong())
-
         }
     }
 }
