@@ -3,11 +3,7 @@ package ru.netology.nmedia
 import Post
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.ui.theme.NMediaTheme
 import java.text.DecimalFormat
 import kotlin.math.floor
 import kotlin.math.log10
@@ -65,17 +61,4 @@ fun countViews(count:Long): String{
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "$name!")
-
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    NMediaTheme {
-        Greeting("NMedia")
-    }
-}
 
