@@ -4,33 +4,24 @@ import Post
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.viewModel.PostViewModel
 import java.text.DecimalFormat
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel = PostViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 0L,
-            author = getString(R.string.author),
-            content = getString(R.string.post_text),
-            published = getString(R.string.published),
-            likes = 999,
-            shares  = 995
-        )
-
-        with (binding){
-            author.text = post.author
-            published.text = post.published
-            postText.text = post.content
-            likeCountText.text = post.likes.toString()
-            shareCountText.text = post.shares.toString()
+        viewModel.data.observe(this) { post ->
+            binding.render(post)
         }
 
             binding.likeIcon.setOnClickListener {

@@ -1,9 +1,9 @@
 import android.provider.Settings.Global.getString
 import ru.netology.nmedia.R
 
-data class Post (
+data class Post(
     val id: Long,
-    val author: String,
+    val author: String?,
     val content: String,
     val published: String,
     var likes: Int = 0,
