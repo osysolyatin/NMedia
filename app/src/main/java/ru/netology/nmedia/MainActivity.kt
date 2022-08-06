@@ -3,6 +3,7 @@ package ru.netology.nmedia
 import Post
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.annotation.DrawableRes
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 import java.text.DecimalFormat
@@ -24,22 +25,29 @@ class MainActivity : ComponentActivity() {
             binding.render(post)
         }
 
-            binding.likeIcon.setOnClickListener {
-            post.likedByMe = !post.likedByMe
-            val imageResId =
-                if (post.likedByMe) R.drawable.ic_like_filled_24 else R.drawable.ic_like_border_24
-            binding.likeIcon.setImageResource(imageResId)
-
-            if (post.likedByMe) post.likes += 1 else post.likes -= 1
-            binding.likeCountText.text = countViews(post.likes.toLong())
+        binding.likeIcon.setOnClickListener {
+            viewModel.onLikeClickLiked()
         }
 
         binding.shareIcon.setOnClickListener {
-                post.shares ++
-            binding.shareCountText.text = countViews(post.shares.toLong())
+            viewModel.onClickShared()
         }
+
     }
 }
+
+private fun ActivityMainBinding.render(post: Post) {
+    author.text = post.author
+    postText.text = post.content
+    published.text = post.published
+    likeIcon.setImageResource(getLikeIconResId(post.likedByMe))
+    likeCountText.text = countViews(post.likes.toLong())
+    shareCountText.text = countViews(post.shares.toLong())
+}
+
+@DrawableRes
+private fun getLikeIconResId(liked: Boolean) =
+    if (liked) R.drawable.ic_like_filled_24 else R.drawable.ic_like_border_24
 
 fun countViews(count:Long): String{
     val array = arrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')

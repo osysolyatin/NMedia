@@ -1,11 +1,7 @@
 package ru.netology.nmedia.data.impl
 
 import Post
-import androidx.core.content.res.TypedArrayUtils.getString
-
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ru.netology.nmedia.R
 import ru.netology.nmedia.data.PostRepository
 
 class InMemoryPostRepository : PostRepository {
@@ -25,7 +21,17 @@ class InMemoryPostRepository : PostRepository {
         val currentPost = checkNotNull(data.value) {
             "Data value should not be null"
         }
-        val likedPost = currentPost.copy(likedByMe = !currentPost.likedByMe)
+        val liked = !currentPost.likedByMe
+        if (liked) currentPost.likes++ else currentPost.likes--
+        val likedPost = currentPost.copy(likedByMe = liked, likes = currentPost.likes)
         data.value = likedPost
+    }
+
+    override fun shared() {
+        val currentPost = checkNotNull(data.value) {
+            "Data value should not be null"
+        }
+        val sharedPost = currentPost.copy(shares = currentPost.shares++)
+        data.value = sharedPost
     }
 }
