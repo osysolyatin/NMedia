@@ -26,11 +26,11 @@ class MainActivity : ComponentActivity() {
         }
 
         binding.likeIcon.setOnClickListener {
-            viewModel.onLikeClickLiked()
+            viewModel.onLikeClick()
         }
 
         binding.shareIcon.setOnClickListener {
-            viewModel.onClickShared()
+            viewModel.onShareClick()
         }
 
     }
