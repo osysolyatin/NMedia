@@ -3,6 +3,7 @@ package ru.netology.nmedia
 import Post
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.viewModel.PostViewModel
@@ -13,7 +14,7 @@ import kotlin.math.pow
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel = PostViewModel()
+    private val viewModel by viewModels<PostViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
