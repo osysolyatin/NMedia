@@ -5,33 +5,38 @@ import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
 
 class InMemoryPostRepository : PostRepository {
-    override val data = MutableLiveData<Post>(
-        Post(
-            id = 0L,
+
+    private val posts get() = checkNotNull(data.value) {
+        "Data value should not be null"
+    }
+
+    override val data = MutableLiveData (
+        List(1000) { index -> Post(
+            id = index + 1L,
             author = "Олег",
-            content = "Привет. Это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн маркетингу.",
-            published = "04 августа 2022 в 18:50",
+            content = "Some random content No $index",
+            published = "10 августа 2022 в 18:50",
             likes = 999,
             shares = 995
         )
+        }
     )
 
-
-    override fun like() {
-        val currentPost = checkNotNull(data.value) {
-            "Data value should not be null"
+    override fun like(postId: Long) {
+        data.value = posts.map {
+            if (it.id != postId) it
+            else {
+                val liked = !it.likedByMe
+                if (liked) it.likes++ else it.likes--
+                it.copy( likedByMe = liked, likes = it.likes)
+            }
         }
-        val liked = !currentPost.likedByMe
-        if (liked) currentPost.likes++ else currentPost.likes--
-        val likedPost = currentPost.copy(likedByMe = liked, likes = currentPost.likes)
-        data.value = likedPost
     }
 
-    override fun shared() {
-        val currentPost = checkNotNull(data.value) {
-            "Data value should not be null"
+    override fun shared(postId: Long) {
+        data.value = posts.map {
+            if (it.id != postId) it
+            else it.copy(shares = it.shares++)
         }
-        val sharedPost = currentPost.copy(shares = currentPost.shares +1)
-        data.value = sharedPost
     }
 }

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/common_margin_spacing">
 
     <ImageView
         android:id="@+id/avatar"
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="@id/like_icon"
         app:layout_constraintStart_toEndOf="@id/like_icon"
         android:layout_marginStart="@dimen/text_to_icon_margin"
-        android:text="@string/like_count"
+        android:text= "@string/like_count"
         android:ellipsize="end"
         android:singleLine="true"
         />
@@ -135,19 +135,19 @@
         android:singleLine="true"
         />
     <ImageButton
-    android:id="@+id/share_icon"
-    android:layout_width="@dimen/icon_size"
-    android:layout_height="@dimen/icon_size"
-    android:src="@drawable/ic_share_24"
-    android:visibility="visible"
-    tools:src="@drawable/ic_share_24"
-    android:background="@android:color/transparent"
-    app:layout_constraintTop_toTopOf="@id/post_text_barrier"
-    app:layout_constraintStart_toEndOf="@id/comment_icon"
-    android:layout_marginTop="@dimen/common_margin_spacing"
-    android:layout_marginStart="@dimen/icons_margin_spacing"
-    android:contentDescription="@string/reply_icon"
-    />
+        android:id="@+id/share_icon"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:src="@drawable/ic_share_24"
+        android:visibility="visible"
+        tools:src="@drawable/ic_share_24"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="@id/post_text_barrier"
+        app:layout_constraintStart_toEndOf="@id/comment_icon"
+        android:layout_marginTop="@dimen/common_margin_spacing"
+        android:layout_marginStart="@dimen/icons_margin_spacing"
+        android:contentDescription="@string/reply_icon"
+        />
     <TextView
         android:id="@+id/share_count_text"
         android:layout_width="wrap_content"
