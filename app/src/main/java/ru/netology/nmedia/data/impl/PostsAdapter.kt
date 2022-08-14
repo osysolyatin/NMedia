@@ -14,12 +14,12 @@ import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
 
-typealias onPosClicked = (Post) -> Unit
+typealias onPostClicked = (Post) -> Unit
 
 internal class PostsAdapter(
 
-    private val onLikeClick: onPosClicked,
-    private val onShareClick: onPosClicked
+    private val onLikeClick: onPostClicked,
+    private val onShareClick: onPostClicked
 
 ) : ListAdapter <Post, PostsAdapter.ViewHolder> (DiffCallback){
 
@@ -34,7 +34,7 @@ internal class PostsAdapter(
     }
 
     class ViewHolder (
-        private val binding: PostBinding, onLikeClick: onPosClicked, onShareClick: onPosClicked /* = (Post) -> kotlin.Unit */
+        private val binding: PostBinding, onLikeClick: onPostClicked, onShareClick: onPostClicked /* = (Post) -> kotlin.Unit */
     ): RecyclerView.ViewHolder (binding.root) {
 
         private lateinit var post: Post
