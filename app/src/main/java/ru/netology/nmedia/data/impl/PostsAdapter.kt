@@ -8,15 +8,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.countViews
 import ru.netology.nmedia.databinding.PostBinding
+import java.text.DecimalFormat
+import kotlin.math.floor
+import kotlin.math.log10
+import kotlin.math.pow
 
-typealias onPostLikeClicked = (Post) -> Unit
+typealias onPosClicked = (Post) -> Unit
 
 internal class PostsAdapter(
 
-    private val onLikeClick: onPostLikeClicked,
-    private val onShareClick: onPostLikeClicked
+    private val onLikeClick: onPosClicked,
+    private val onShareClick: onPosClicked
 
 ) : ListAdapter <Post, PostsAdapter.ViewHolder> (DiffCallback){
 
@@ -31,7 +34,7 @@ internal class PostsAdapter(
     }
 
     class ViewHolder (
-        private val binding: PostBinding, onLikeClick: onPostLikeClicked, onShareClick: onPostLikeClicked /* = (Post) -> kotlin.Unit */
+        private val binding: PostBinding, onLikeClick: onPosClicked, onShareClick: onPosClicked /* = (Post) -> kotlin.Unit */
     ): RecyclerView.ViewHolder (binding.root) {
 
         private lateinit var post: Post
@@ -56,6 +59,17 @@ internal class PostsAdapter(
         @DrawableRes
         private fun getLikeIconResId(liked: Boolean) =
             if (liked) R.drawable.ic_like_filled_24 else R.drawable.ic_like_border_24
+
+        private fun countViews(count:Long): String{
+            val array = arrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
+            val value = floor(log10(count.toDouble())).toInt()
+            val  base = value / 3
+            return if (value >= 3 && base < array.size) {
+                DecimalFormat("#0.0").format(count/ 10.0.pow((base * 3).toDouble())) + array[base]
+            } else {
+                DecimalFormat("#,##0").format(count)
+            }
+        }
     }
 
     private object DiffCallback : DiffUtil.ItemCallback<Post>(){

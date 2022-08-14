@@ -14,7 +14,7 @@ class InMemoryPostRepository : PostRepository {
         List(1000) { index -> Post(
             id = index + 1L,
             author = "Олег",
-            content = "Some random content No $index",
+            content = "Some random content No ${index+1}",
             published = "10 августа 2022 в 18:50",
             likes = 999,
             shares = 995
