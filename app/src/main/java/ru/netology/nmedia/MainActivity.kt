@@ -6,10 +6,6 @@ import androidx.activity.viewModels
 import ru.netology.nmedia.data.impl.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.viewModel.PostViewModel
-import java.text.DecimalFormat
-import kotlin.math.floor
-import kotlin.math.log10
-import kotlin.math.pow
 
 class MainActivity : ComponentActivity() {
 
