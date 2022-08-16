@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 
 interface PostRepository {
 
-    val data: LiveData<Post>
-    fun like()
-    fun shared()
+    val data: LiveData<List<Post>>
+    fun like(postId: Long)
+    fun shared(postId: Long)
 }
