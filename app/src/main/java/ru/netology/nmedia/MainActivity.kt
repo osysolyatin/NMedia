@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
 
         val adapter = PostsAdapter(viewModel::onLikeClick, viewModel::onShareClick)
 
-        binding.root.adapter = adapter
+        binding.container.adapter = adapter
         viewModel.data.observe(this) {posts ->
             adapter.submitList(posts)
         }
