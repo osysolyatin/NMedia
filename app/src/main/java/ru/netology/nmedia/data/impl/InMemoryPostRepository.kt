@@ -36,7 +36,7 @@ class InMemoryPostRepository : PostRepository {
     override fun shared(postId: Long) {
         data.value = posts.map {
             if (it.id != postId) it
-            else it.copy(shares = it.shares++)
+            else it.copy(shares = it.shares +1)
         }
     }
 }
