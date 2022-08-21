@@ -10,7 +10,6 @@ import ru.netology.nmedia.data.impl.InMemoryPostRepository
 class PostViewModel : ViewModel(), PostInteractionListener {
 
     private val repository : PostRepository = InMemoryPostRepository()
-
     val data by repository::data
 
     val currentPost = MutableLiveData<Post?> (null)
@@ -22,7 +21,7 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         ) ?:
             Post (
             id = PostRepository.NEW_POST_ID,
-            author = "Me - Tsar",
+            author = "Me",
             content = content,
             published = "24.12.2021"
                 )
@@ -40,8 +39,9 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        currentPost.value = post
+        //TODO Достучаться здесь до поля с id = "@+id/edit_mode_description_group" чтобы установить у этого полся View.Visibility = visible
 
+        currentPost.value = post
     }
 
     // endregion PostInteractionListener

@@ -38,9 +38,11 @@ internal class PostsAdapter(
     ): RecyclerView.ViewHolder (binding.root) {
 
         private lateinit var post: Post
+
         private val popupMenu by lazy {
             PopupMenu(itemView.context, binding.postMenu).apply {
                 inflate(R.menu.options_post)
+
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         R.id.remove -> {
@@ -60,6 +62,7 @@ internal class PostsAdapter(
         init {
             binding.likeIcon.setOnClickListener { listener.onLikeClicked(post) }
             binding.shareIcon.setOnClickListener { listener.onShareClicked(post) }
+            binding.postMenu.setOnClickListener { popupMenu.show() }
         }
 
         fun bind (post: Post) {
@@ -71,9 +74,9 @@ internal class PostsAdapter(
                 likeIcon.setImageResource(getLikeIconResId(post.likedByMe))
                 likeCountText.text = countViews(post.likes.toLong())
                 shareCountText.text = countViews(post.shares.toLong())
-                postMenu.setOnClickListener {
-                    popupMenu.show()
-                }
+//                postMenu.setOnClickListener {
+//                    popupMenu.show()
+//                }
             }
         }
 

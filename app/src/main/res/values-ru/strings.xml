@@ -17,4 +17,8 @@
     <string name="save_button">Сохранить</string>
     <string name="menu_edit">Редактировать</string>
     <string name="post_text">" Текст поста"</string>
+    <string name="description_post_edit">Редактирование</string>
+    <string name="description_edit_avatar">Редактирование</string>
+    <string name="description_cancel_button">Отменить</string>
+    <string name="post_to_be_edited">Редактируемый пост</string>
 </resources>

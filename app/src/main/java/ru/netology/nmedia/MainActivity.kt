@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import ru.netology.nmedia.adapter.PostsAdapter
@@ -22,15 +23,23 @@ class MainActivity : ComponentActivity() {
         val adapter = PostsAdapter(viewModel)
 
         binding.container.adapter = adapter
+
         viewModel.data.observe(this) {posts ->
             adapter.submitList(posts)
         }
+
         binding.saveButton.setOnClickListener {
             with(binding.contentEditText) {
                 val content = text.toString()
                 viewModel.onSaveButtonClicked(content)
             }
         }
+
+        binding.cancelEditButton.setOnClickListener {
+            binding.editModeDescriptionGroup.visibility = View.GONE
+            binding.contentEditText.text.clear()
+        }
+
         viewModel.currentPost.observe(this) { currentPost ->
             with(binding.contentEditText) {
                 val content = currentPost?.content

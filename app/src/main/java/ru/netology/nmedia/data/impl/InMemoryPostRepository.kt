@@ -16,7 +16,7 @@ class InMemoryPostRepository : PostRepository {
         List(GENERATED_POSTS_COUNT) { index -> Post(
             id = index + 1L,
             author = "Олег",
-            content = "Some random content No ${index+1}",
+            content = "Post content No ${index+1}",
             published = "10 августа 2022 в 18:50",
             likes = 999,
             shares = 995

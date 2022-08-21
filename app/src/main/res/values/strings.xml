@@ -16,4 +16,8 @@
     <string name="remove">Remove</string>
     <string name="save_button">Save Button</string>
     <string name="menu_edit">Edit</string>
+    <string name="description_post_edit">Edit message</string>
+    <string name="description_edit_avatar">Edit mode</string>
+    <string name="description_cancel_button">Cancel</string>
+    <string name="post_to_be_edited">Post to be edited</string>
 </resources>
