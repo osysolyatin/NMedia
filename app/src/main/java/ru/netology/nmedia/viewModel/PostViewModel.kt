@@ -29,6 +29,10 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         currentPost.value = null
     }
 
+    fun onCancelEditButtonClicked() {
+        currentPost.value = null
+    }
+
 
     // region PostInteractionListener
 
@@ -39,8 +43,6 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        //TODO Достучаться здесь до поля с id = "@+id/edit_mode_description_group" чтобы установить у этого полся View.Visibility = visible
-
         currentPost.value = post
     }
 

@@ -37,7 +37,12 @@ class MainActivity : ComponentActivity() {
 
         binding.cancelEditButton.setOnClickListener {
             binding.editModeDescriptionGroup.visibility = View.GONE
-            binding.contentEditText.text.clear()
+            with(binding.contentEditText) {
+                text.clear()
+                clearFocus()
+                hideKeyboard()
+                viewModel.onCancelEditButtonClicked()
+            }
         }
 
         viewModel.currentPost.observe(this) { currentPost ->
@@ -45,9 +50,12 @@ class MainActivity : ComponentActivity() {
                 val content = currentPost?.content
                 setText(content) /*затирание текста*/
                 if (content != null) {
+                    binding.editModeDescriptionGroup.visibility = View.VISIBLE
+                    binding.postToBeEdited.text = currentPost.content
                     requestFocus()
                     showKeyboard()
                 } else {
+                    binding.editModeDescriptionGroup.visibility = View.GONE
                     clearFocus()
                     hideKeyboard()
                 }
