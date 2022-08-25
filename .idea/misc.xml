@@ -13,12 +13,16 @@
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_like_border_24.xml" value="0.1815" />
         <entry key="app/src/main/res/drawable/ic_like_filled_24.xml" value="0.1815" />
+        <entry key="app/src/main/res/drawable/ic_mode_edit_24.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/ic_redo_icon_24.xml" value="0.1815" />
         <entry key="app/src/main/res/drawable/ic_reply_icon_24.xml" value="0.1815" />
+        <entry key="app/src/main/res/drawable/ic_save_24.xml" value="0.2025" />
         <entry key="app/src/main/res/drawable/ic_visibility_24.xml" value="0.1815" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.6589214374492695" />
         <entry key="app/src/main/res/layout/main_screen_layout.xml" value="0.18478260869565216" />
+        <entry key="app/src/main/res/layout/post.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/post_list_item.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/options_post.xml" value="0.5463659147869674" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1345" />
       </map>
