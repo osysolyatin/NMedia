@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityShareBinding
 
 class ShareActivity :AppCompatActivity() {
@@ -22,7 +23,7 @@ class ShareActivity :AppCompatActivity() {
         if (text.isNullOrBlank()) {
             Snackbar.make(
                 binding.root,
-                "Присланный текст пустой",
+                R.string.error_empty_content,
                 Snackbar.LENGTH_INDEFINITE
             ). setAction(android.R.string.ok) {
                 finish()

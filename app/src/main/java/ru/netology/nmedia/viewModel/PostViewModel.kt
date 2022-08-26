@@ -50,5 +50,20 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         currentPost.value = post
     }
 
+    fun onCreateNewPost (newPostContent: String) {
+        if (newPostContent.isNullOrBlank()) return
+        val post = currentPost.value?.copy(
+            content = newPostContent
+        ) ?:
+        Post (
+            id = PostRepository.NEW_POST_ID,
+            author = "Me",
+            content = newPostContent,
+            published = "24.12.2021"
+        )
+        repository.save(post)
+        currentPost.value = null
+    }
+
     // endregion PostInteractionListener
 }

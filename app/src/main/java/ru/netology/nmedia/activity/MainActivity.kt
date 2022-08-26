@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.util.hideKeyboard
@@ -70,16 +71,18 @@ class MainActivity : ComponentActivity() {
 
                 putExtra(Intent.EXTRA_TEXT,post?.content)
             }
-            val shareIntent = Intent.createChooser(intent,"Подделиться")
+            val shareIntent = Intent.createChooser(intent, getString(R.string.description_post_share))
             startActivity(shareIntent)
         }
 
         val activityLauncher = registerForActivityResult(
             NewPostActivity.ResultContract
         ) { postContent: String? ->
-            postContent?.let (viewModel :: onSaveButtonClicked)
+            postContent?.let (viewModel :: onCreateNewPost)
         }
-        activityLauncher.launch(Unit)
+        binding.fabButton.setOnClickListener {
+            activityLauncher.launch(Unit)
+        }
     }
 }
 

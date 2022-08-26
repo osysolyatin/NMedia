@@ -31,9 +31,10 @@ class NewPostActivity : AppCompatActivity (){
             resultIntent.putExtra(POST_CONTENT_EXTRA_KEY, postContent)
             setResult(Activity.RESULT_OK, resultIntent)
         }
+        finish()
     }
 
-    companion object {
+    private companion object {
         const val POST_CONTENT_EXTRA_KEY = "postContent"
     }
 
@@ -47,9 +48,7 @@ class NewPostActivity : AppCompatActivity (){
             intent ?: return null // Прошли все проверки
 
             return intent.getStringExtra(POST_CONTENT_EXTRA_KEY)
+            }
         }
-    }
-
 
     }
-}
