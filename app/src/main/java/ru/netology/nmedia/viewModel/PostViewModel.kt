@@ -33,12 +33,16 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         currentPost.value = null
     }
 
+    val shareEvent = MutableLiveData<Post?>(null)
 
     // region PostInteractionListener
 
     override fun onLikeClicked(post: Post) = repository.like(post.id)
 
-    override fun onShareClicked(post: Post) = repository.shared(post.id)
+    override fun onShareClicked(post: Post) {
+        repository.shared(post.id)
+        shareEvent.value = post
+    }
 
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
