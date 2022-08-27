@@ -3,6 +3,7 @@ package ru.netology.nmedia.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.Post
+import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.adapter.PostInteractionListener
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.InMemoryPostRepository
@@ -33,7 +34,7 @@ class PostViewModel : ViewModel(), PostInteractionListener {
         currentPost.value = null
     }
 
-    val shareEvent = MutableLiveData<Post?>(null)
+    val shareEvent = SingleLiveEvent<Post>()
 
     // region PostInteractionListener
 
@@ -48,6 +49,7 @@ class PostViewModel : ViewModel(), PostInteractionListener {
 
     override fun onEditClicked(post: Post) {
         currentPost.value = post
+
     }
 
     fun onCreateNewPost (newPostContent: String) {
