@@ -27,39 +27,15 @@ class MainActivity : ComponentActivity() {
             adapter.submitList(posts)
         }
 
-//        binding.saveButton.setOnClickListener {
-//            with(binding.contentEditText) {
-//                val content = text.toString()
-//                viewModel.onSaveButtonClicked(content)
-//            }
-//        }
 
-//        binding.cancelEditButton.setOnClickListener {
-//            binding.editModeDescriptionGroup.visibility = View.GONE
-//            with(binding.contentEditText) {
-//                text.clear()
-//                clearFocus()
-//                hideKeyboard()
-//                viewModel.onCancelEditButtonClicked()
-//            }
-//        }
-
-//        viewModel.currentPost.observe(this) { currentPost ->
-//            with(binding.contentEditText) {
-//                val content = currentPost?.content
-//                setText(content) /*затирание текста*/
-//                if (content != null) {
-//                    binding.editModeDescriptionGroup.visibility = View.VISIBLE
-//                    binding.postToBeEdited.text = currentPost.content
-//                    requestFocus()
-//                    showKeyboard()
-//                } else {
-//                    binding.editModeDescriptionGroup.visibility = View.GONE
-//                    clearFocus()
-//                    hideKeyboard()
-//                }
-//            }
-//        }
+        viewModel.currentPost.observe(this) {currentPost ->
+            val activityLauncher = registerForActivityResult(
+                NewPostActivity.ResultContract
+            ) { postContent: String? ->
+                postContent?.let (viewModel :: onCreateOrEditPost)
+            }
+            activityLauncher.launch(currentPost?.content)
+        }
 
         viewModel.shareEvent.observe (this){ post ->
             val intent = Intent().apply {
@@ -75,10 +51,11 @@ class MainActivity : ComponentActivity() {
         val activityLauncher = registerForActivityResult(
             NewPostActivity.ResultContract
         ) { postContent: String? ->
-            postContent?.let (viewModel :: onCreateNewPost)
+            postContent?.let (viewModel :: onCreateOrEditPost)
         }
         binding.fabButton.setOnClickListener {
-            activityLauncher.launch(Unit)
+            val post = viewModel.currentPost.value
+            activityLauncher.launch(post?.content)
         }
     }
 }

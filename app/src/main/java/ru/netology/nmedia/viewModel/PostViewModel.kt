@@ -1,6 +1,5 @@
 package ru.netology.nmedia.viewModel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.SingleLiveEvent
@@ -13,28 +12,24 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     private val repository : PostRepository = InMemoryPostRepository()
     val data by repository::data
 
-    val currentPost = MutableLiveData<Post?> (null)
+    val currentPost = SingleLiveEvent<Post?>()
 
-    fun onSaveButtonClicked (content: String) {
-        if (content.isBlank()) return
-        val post = currentPost.value?.copy(
-            content = content
-        ) ?:
-            Post (
-            id = PostRepository.NEW_POST_ID,
-            author = "Me",
-            content = content,
-            published = "24.12.2021"
-                )
-        repository.save(post)
-        currentPost.value = null
-    }
+//    fun onSaveButtonClicked (content: String) {
+//        if (content.isBlank()) return
+//        val post = currentPost.value?.copy(
+//            content = content
+//        ) ?:
+//            Post (
+//            id = PostRepository.NEW_POST_ID,
+//            author = "Me",
+//            content = content,
+//            published = "24.12.2021"
+//                )
+//        repository.save(post)
+//        currentPost.value = null
+//    }
 
-    fun onCancelEditButtonClicked() {
-        currentPost.value = null
-    }
-
-    val shareEvent = SingleLiveEvent<Post>()
+    val shareEvent = SingleLiveEvent<Post?>()
 
     // region PostInteractionListener
 
@@ -49,18 +44,17 @@ class PostViewModel : ViewModel(), PostInteractionListener {
 
     override fun onEditClicked(post: Post) {
         currentPost.value = post
-
     }
 
-    fun onCreateNewPost (newPostContent: String) {
-        if (newPostContent.isNullOrBlank()) return
+    fun onCreateOrEditPost (postContent: String) {
+        if (postContent.isBlank()) return
         val post = currentPost.value?.copy(
-            content = newPostContent
+            content = postContent
         ) ?:
         Post (
             id = PostRepository.NEW_POST_ID,
             author = "Me",
-            content = newPostContent,
+            content = postContent,
             published = "24.12.2021"
         )
         repository.save(post)
