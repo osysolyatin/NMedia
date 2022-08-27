@@ -23,14 +23,13 @@ class NewPostActivity : AppCompatActivity (){
         val intent = intent ?: return
         val editText = intent.getStringExtra(Intent.EXTRA_TEXT)
 
+        if (editText != null) {
+            binding.edit.setText(editText)
+        }
         binding.edit.requestFocus()
 
 
         binding.saveOkButton.setOnClickListener {
-
-            if (editText != null) {
-                binding.edit.setText(editText)
-            }
             onSaveOkButtonClicked(binding.edit.text?.toString())
         }
     }
@@ -42,7 +41,6 @@ class NewPostActivity : AppCompatActivity (){
             val resultIntent = Intent()
             resultIntent.putExtra(POST_CONTENT_EXTRA_KEY, postContent)
             setResult(Activity.RESULT_OK, resultIntent)
-            viewModel.onCreateOrEditPost(postContent)
         }
         finish()
     }

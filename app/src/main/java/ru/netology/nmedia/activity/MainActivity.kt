@@ -27,16 +27,6 @@ class MainActivity : ComponentActivity() {
             adapter.submitList(posts)
         }
 
-
-        viewModel.currentPost.observe(this) {currentPost ->
-            val activityLauncher = registerForActivityResult(
-                NewPostActivity.ResultContract
-            ) { postContent: String? ->
-                postContent?.let (viewModel :: onCreateOrEditPost)
-            }
-            activityLauncher.launch(currentPost?.content)
-        }
-
         viewModel.shareEvent.observe (this){ post ->
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -56,6 +46,9 @@ class MainActivity : ComponentActivity() {
         binding.fabButton.setOnClickListener {
             val post = viewModel.currentPost.value
             activityLauncher.launch(post?.content)
+        }
+        viewModel.editEvent.observe(this) {
+            activityLauncher.launch(it?.content)
         }
     }
 }

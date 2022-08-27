@@ -1,5 +1,6 @@
 package ru.netology.nmedia.viewModel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.SingleLiveEvent
@@ -12,24 +13,10 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     private val repository : PostRepository = InMemoryPostRepository()
     val data by repository::data
 
-    val currentPost = SingleLiveEvent<Post?>()
+    val currentPost = MutableLiveData<Post?> (null)
 
-//    fun onSaveButtonClicked (content: String) {
-//        if (content.isBlank()) return
-//        val post = currentPost.value?.copy(
-//            content = content
-//        ) ?:
-//            Post (
-//            id = PostRepository.NEW_POST_ID,
-//            author = "Me",
-//            content = content,
-//            published = "24.12.2021"
-//                )
-//        repository.save(post)
-//        currentPost.value = null
-//    }
-
-    val shareEvent = SingleLiveEvent<Post?>()
+    val shareEvent = SingleLiveEvent<Post>()
+    val editEvent = SingleLiveEvent<Post>()
 
     // region PostInteractionListener
 
@@ -43,18 +30,18 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        currentPost.value = post
+        editEvent.value = post
     }
 
-    fun onCreateOrEditPost (postContent: String) {
-        if (postContent.isBlank()) return
+    fun onCreateOrEditPost (newPostContent: String) {
+        if (newPostContent.isBlank()) return
         val post = currentPost.value?.copy(
-            content = postContent
+            content = newPostContent
         ) ?:
         Post (
             id = PostRepository.NEW_POST_ID,
             author = "Me",
-            content = postContent,
+            content = newPostContent,
             published = "24.12.2021"
         )
         repository.save(post)
