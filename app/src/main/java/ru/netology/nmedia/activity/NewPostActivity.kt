@@ -23,6 +23,8 @@ class NewPostActivity : AppCompatActivity (){
         val intent = intent ?: return
         val editText = intent.getStringExtra(Intent.EXTRA_TEXT)
 
+        intent.putExtra(Intent.EXTRA_TEXT, editText)
+
         if (editText != null) {
             binding.edit.setText(editText)
         }
