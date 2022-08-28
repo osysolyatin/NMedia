@@ -41,14 +41,13 @@ class MainActivity : ComponentActivity() {
         val activityLauncher = registerForActivityResult(
             NewPostActivity.ResultContract
         ) { postContent: String? ->
-            println("postContent = $postContent")
             postContent?.let (viewModel :: onCreateOrEditPost)
         }
         binding.fabButton.setOnClickListener {
             val input = ""
             activityLauncher.launch(input)
         }
-        viewModel.currentPost.observe(this) {
+        viewModel.editEvent.observe(this) {
             activityLauncher.launch(it?.content)
         }
     }

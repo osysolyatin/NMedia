@@ -5,14 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityNewPostBinding
-import ru.netology.nmedia.viewModel.PostViewModel
 
 class NewPostActivity : AppCompatActivity (){
-
-    private val viewModel by viewModels<PostViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +17,7 @@ class NewPostActivity : AppCompatActivity (){
         val binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.edit.setTextColor(resources.getColor(R.color.black,theme))
         binding.edit.setText(textToBeEdited)
         binding.edit.requestFocus()
 
@@ -48,7 +46,7 @@ class NewPostActivity : AppCompatActivity (){
     object ResultContract : ActivityResultContract <String?,String?> () {
 
         override fun createIntent(context: Context, input: String?) : Intent {
-            textToBeEdited = ""
+            textToBeEdited = "Enter new post here"
             if (input != null) {
                 textToBeEdited = input
             }
@@ -57,7 +55,7 @@ class NewPostActivity : AppCompatActivity (){
         override fun parseResult(resultCode: Int, intent: Intent?): String? {
             if (resultCode != Activity.RESULT_OK) return null
             intent ?: return null // Прошли все проверки
-            return intent.getStringExtra(Intent.EXTRA_TEXT)
+            return intent.getStringExtra(POST_CONTENT_EXTRA_KEY)
             }
         }
 

@@ -23,4 +23,5 @@
     <string name="post_to_be_edited">Редактируемый пост</string>
     <string name="description_post_save">Сохранить</string>
     <string name="error_empty_content">Контент не может быть пустым</string>
+    <string name="enter_new_post_text">Введие текст поста здесь</string>
 </resources>

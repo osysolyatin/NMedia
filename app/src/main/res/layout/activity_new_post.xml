@@ -12,6 +12,8 @@
         android:layout_height="match_parent"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:text="@string/enter_new_post_text"
+        android:textColor="#ADADADAD"
         android:background="@android:color/transparent"
         />
 

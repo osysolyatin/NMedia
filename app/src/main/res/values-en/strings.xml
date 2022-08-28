@@ -23,4 +23,5 @@
     <string name="post_to_be_edited">Post to be edited</string>
     <string name="description_post_save">Save</string>
     <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="enter_new_post_text">Enter new post text here</string>
 </resources>
