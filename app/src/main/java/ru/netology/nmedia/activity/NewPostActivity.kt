@@ -20,14 +20,7 @@ class NewPostActivity : AppCompatActivity (){
         val binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = intent ?: return
-        val editText = intent.getStringExtra(Intent.EXTRA_TEXT)
-
-        intent.putExtra(Intent.EXTRA_TEXT, editText)
-
-        if (editText != null) {
-            binding.edit.setText(editText)
-        }
+        binding.edit.setText(textToBeEdited)
         binding.edit.requestFocus()
 
 
@@ -36,7 +29,7 @@ class NewPostActivity : AppCompatActivity (){
         }
     }
     private fun onSaveOkButtonClicked (postContent: String?) {
-
+        println("postContent from OnSaveButton - $postContent")
         if (postContent.isNullOrBlank()) {
             setResult(Activity.RESULT_CANCELED)
         } else {
@@ -49,12 +42,16 @@ class NewPostActivity : AppCompatActivity (){
 
     private companion object {
         const val POST_CONTENT_EXTRA_KEY = "postContent"
+        var textToBeEdited = ""
     }
 
     object ResultContract : ActivityResultContract <String?,String?> () {
 
         override fun createIntent(context: Context, input: String?) : Intent {
-
+            textToBeEdited = ""
+            if (input != null) {
+                textToBeEdited = input
+            }
         return Intent(context, NewPostActivity ::class.java) //сформировали явный Интент
     }
         override fun parseResult(resultCode: Int, intent: Intent?): String? {

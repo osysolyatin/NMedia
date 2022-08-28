@@ -30,11 +30,13 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        editEvent.value = post
+        currentPost.value = post
     }
 
     fun onCreateOrEditPost (newPostContent: String) {
+        println("newPostContent = $newPostContent")
         if (newPostContent.isBlank()) return
+        println("currentPost - ${currentPost.value}")
         val post = currentPost.value?.copy(
             content = newPostContent
         ) ?:
