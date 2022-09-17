@@ -39,12 +39,21 @@
         <item name="android:background">@color/checkbox_background</item>
     </style>
 
-    <style name="Widget.AppTheme.VisibilityButton." parent="Widget.Material3.Button.TextButton.Icon">
+    <style name="Widget.AppTheme.VisibilityButton" parent="Widget.Material3.Button.TextButton.Icon">
         <item name="icon">@drawable/ic_visibility_24</item>
         <item name="android:textColor">@color/icon_text_color</item>
         <item name="iconTint">@color/visibility_checkbox_tint</item>
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
+        <item name="android:background">@color/checkbox_background</item>
+    </style>
+
+    <style name="Widget.AppTheme.PlayButton" parent="Widget.Material3.Button.TextButton.Icon">
+        <item name="icon">@drawable/ic_play_circle_24</item>
+        <item name="android:textColor">@color/icon_text_color</item>
+        <item name="iconTint">@color/visibility_checkbox_tint</item>
+        <item name="android:minWidth">56dp</item>
+        <item name="android:minHeight">56dp</item>
         <item name="android:background">@color/checkbox_background</item>
     </style>
 

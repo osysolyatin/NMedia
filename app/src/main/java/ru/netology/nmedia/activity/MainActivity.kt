@@ -1,6 +1,7 @@
 package ru.netology.nmedia.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
@@ -27,6 +28,9 @@ class MainActivity : ComponentActivity() {
             adapter.submitList(posts)
         }
 
+//        val intentVideo = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/ajhWG7Se6GA"))
+//        startActivity(intentVideo)
+
         viewModel.shareEvent.observe (this){ post ->
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -49,6 +53,13 @@ class MainActivity : ComponentActivity() {
         }
         viewModel.editEvent.observe(this) {
             activityLauncher.launch(it?.content)
+        }
+        viewModel.videoEvent.observe(this) {
+            val intent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                Uri.parse("https://youtu.be/ajhWG7Se6GA")
+            }
+            startActivity(intent)
         }
     }
 }

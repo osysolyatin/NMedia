@@ -88,6 +88,44 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="post_text"
         />
+
+    <VideoView
+        android:id="@+id/post_video_content"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:contentDescription="video Youtube"
+        android:scrollbarFadeDuration="@android:integer/config_longAnimTime"
+        app:layout_constraintTop_toBottomOf="@id/post_text_barrier"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/play_button"
+        style="@style/Widget.AppTheme.PlayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:paddingRight="0dp"
+        app:layout_constraintBottom_toTopOf="@id/post_video_content"
+        app:layout_constraintEnd_toStartOf="@id/post_video_content"
+        app:layout_constraintStart_toEndOf="@id/post_video_content"
+        app:layout_constraintTop_toBottomOf="@id/post_video_content"
+        />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/video_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="post_video_content, play_button"
+        android:visibility="gone"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/post_video_barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="post_video_content"
+        />
+
     <com.google.android.material.button.MaterialButton
 
         android:id="@+id/like_icon"
@@ -100,7 +138,7 @@
         android:textSize="15sp"
         android:paddingStart="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/post_text_barrier"
+        app:layout_constraintTop_toBottomOf="@id/post_video_barrier"
         android:contentDescription="@string/description_post_like"
         />
 
@@ -112,7 +150,7 @@
         android:checkable="true"
         android:text="78"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/post_text_barrier"
+        app:layout_constraintTop_toBottomOf="@id/post_video_barrier"
         app:layout_constraintStart_toEndOf="@id/like_icon"
         android:contentDescription="@string/description_post_comment"
         />
@@ -125,7 +163,7 @@
         android:checkable="true"
         android:text="999"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/post_text_barrier"
+        app:layout_constraintTop_toBottomOf="@id/post_video_barrier"
         app:layout_constraintStart_toEndOf="@id/comment_icon"
         android:contentDescription="@string/description_post_share"
         />
@@ -134,14 +172,19 @@
         android:id="@+id/visibility_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppTheme.VisibilityButton."
+        style="@style/Widget.AppTheme.VisibilityButton"
         android:checkable="true"
         android:text="12,4K"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@id/post_text_barrier"
+        app:layout_constraintTop_toBottomOf="@id/post_video_barrier"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@string/description_post_visibility"
         />
-
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="like_icon, comment_icon, share_icon,visibility_icon"
+        app:layout_constraintTop_toBottomOf="@id/post_video_barrier"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

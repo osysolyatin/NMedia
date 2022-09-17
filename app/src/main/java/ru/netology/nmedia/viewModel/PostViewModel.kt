@@ -16,6 +16,7 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     private val currentPost = MutableLiveData<Post?> (null)
     val shareEvent = SingleLiveEvent<Post>()
     val editEvent = SingleLiveEvent<Post>()
+    val videoEvent = SingleLiveEvent<Post>()
 
     // region PostInteractionListener
 
@@ -42,10 +43,17 @@ class PostViewModel : ViewModel(), PostInteractionListener {
             id = PostRepository.NEW_POST_ID,
             author = "Me",
             content = newPostContent,
+            video = "https://youtu.be/ajhWG7Se6GA",
             published = "24.12.2021"
         )
         repository.save(post)
         currentPost.value = null
+    }
+
+    override fun onVideoClicked (post: Post) {
+        println("Нажпли на видео поста № ${post.id}")
+        videoEvent.value = post
+//        return Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/ajhWG7Se6GA"))
     }
 
     // endregion PostInteractionListener

@@ -19,7 +19,8 @@ class InMemoryPostRepository : PostRepository {
             content = "Post content No ${index+1}",
             published = "10 августа 2022 в 18:50",
             likes = 999,
-            shares = 995
+            shares = 995,
+            video = null
         )
         }
     )
