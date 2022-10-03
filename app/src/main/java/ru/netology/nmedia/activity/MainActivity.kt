@@ -28,9 +28,6 @@ class MainActivity : ComponentActivity() {
             adapter.submitList(posts)
         }
 
-//        val intentVideo = Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/ajhWG7Se6GA"))
-//        startActivity(intentVideo)
-
         viewModel.shareEvent.observe (this){ post ->
             val intent = Intent().apply {
                 action = Intent.ACTION_SEND
@@ -57,7 +54,7 @@ class MainActivity : ComponentActivity() {
         viewModel.videoEvent.observe(this) {
             val intent = Intent().apply {
                 action = Intent.ACTION_VIEW
-                Uri.parse("https://youtu.be/ajhWG7Se6GA")
+                data = Uri.parse(it.video)
             }
             startActivity(intent)
         }
