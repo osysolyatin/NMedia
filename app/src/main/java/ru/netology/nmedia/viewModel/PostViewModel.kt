@@ -1,16 +1,19 @@
 package ru.netology.nmedia.viewModel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.SingleLiveEvent
 import ru.netology.nmedia.adapter.PostInteractionListener
 import ru.netology.nmedia.data.PostRepository
-import ru.netology.nmedia.data.impl.InMemoryPostRepository
+import ru.netology.nmedia.data.impl.SharedPrefsPostRepository
 
-class PostViewModel : ViewModel(), PostInteractionListener {
+class PostViewModel (
+    application: Application
+) : AndroidViewModel(application), PostInteractionListener {
 
-    private val repository : PostRepository = InMemoryPostRepository()
+    private val repository : PostRepository = SharedPrefsPostRepository(application)
     val data by repository::data
 
     private val currentPost = MutableLiveData<Post?> (null)
