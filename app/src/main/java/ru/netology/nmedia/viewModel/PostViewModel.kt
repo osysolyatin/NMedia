@@ -58,7 +58,6 @@ class PostViewModel (
     override fun onVideoClicked (post: Post) {
         println("Нажпли на видео поста № ${post.id}")
         videoEvent.value = post
-//        return Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/ajhWG7Se6GA"))
     }
 
     // endregion PostInteractionListener
